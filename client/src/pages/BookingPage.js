@@ -108,7 +108,7 @@ const BookingPage = () => {
       };
 
       const response = await axios.post(
-        'http://localhost:5000/api/rides/book',
+        `${process.env.REACT_APP_API_URL}/rides/book`,
         bookingData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

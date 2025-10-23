@@ -23,7 +23,7 @@ const EmailVerificationPage = () => {
     // Verify the email
     const verifyEmail = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/auth/verify-email?token=${token}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/auth/verify-email?token=${token}`);
         setStatus('success');
         setMessage(response.data.message);
         // Redirect to login after 3 seconds
