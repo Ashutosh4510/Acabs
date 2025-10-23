@@ -17,7 +17,7 @@ const BookRide = () => {
     setLoading(true);
     try {
       await axios.post(
-        'http://localhost:5000/api/rides/book',
+        `${process.env.REACT_APP_API_URL}/rides/book`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
