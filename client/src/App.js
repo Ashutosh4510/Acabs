@@ -15,6 +15,9 @@ import Dashboard from './pages/Dashboard';
 import MapsPage from './pages/MapsPage';
 import ProfilePage from './pages/ProfilePage';
 import './App.css';
+import './styles/responsive.css';
+import './styles/global-responsive.css';
+import './styles/animations.css';
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useAuth();

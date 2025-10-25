@@ -107,14 +107,8 @@ const HomePage = () => {
 
 
       {/* Premium Experience Section */}
-      <div id="fleet-section" style={{
-        padding: '8rem 2rem',
-        background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
-        color: '#000000',
-        overflow: 'hidden',
-        position: 'relative'
-      }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <div id="fleet-section" className="fleet-section">
+        <div className="container">
           {/* Background Elements */}
           <div style={{
             position: 'absolute',
@@ -135,13 +129,7 @@ const HomePage = () => {
             transform: 'rotate(-30deg)'
           }}></div>
           
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '6rem',
-            alignItems: 'center',
-            minHeight: '70vh'
-          }}>
+          <div className="fleet-grid">
             {/* Left Content */}
             <div className={isLoaded ? 'slide-left' : ''} style={{ position: 'relative', zIndex: 1 }}>
               <div style={{
@@ -392,14 +380,8 @@ const HomePage = () => {
       </div>
 
       {/* Coverage Map Section */}
-      <div style={{
-        padding: '8rem 2rem',
-        background: 'linear-gradient(135deg, #000 0%, #1a1a1a 100%)',
-        color: 'white',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+      <div className="coverage-section">
+        <div className="container">
           {/* Background Grid */}
           <div style={{
             position: 'absolute',
