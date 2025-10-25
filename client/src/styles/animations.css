@@ -406,3 +406,87 @@
 .page-glitch {
   animation: pageGlitchIn 0.6s ease-out;
 }
+
+/* Mobile-optimized animations */
+@media (max-width: 768px) {
+  .float-animation {
+    animation-duration: 4s;
+  }
+  
+  .slide-up,
+  .slide-left,
+  .slide-right {
+    animation-duration: 0.6s;
+  }
+  
+  .pulse-animation {
+    animation-duration: 1.5s;
+  }
+  
+  .fade-scale {
+    animation-duration: 0.4s;
+  }
+  
+  /* Reduce complex animations on mobile */
+  .page-flip,
+  .page-zoom-rotate,
+  .page-spiral,
+  .page-elastic {
+    animation: pageSlideIn 0.5s ease-out;
+  }
+}
+
+/* Touch-friendly hover effects */
+@media (hover: none) and (pointer: coarse) {
+  .shine-effect:hover::before {
+    animation: none;
+  }
+  
+  .shine-effect:active::before {
+    animation: shine 0.3s ease-in-out;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .float-animation,
+  .pulse-animation,
+  .slide-up,
+  .slide-left,
+  .slide-right,
+  .fade-scale,
+  .scroll-fade-in-up,
+  .card-3d,
+  .road-animation,
+  .shine-effect {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .scroll-fade-in-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Performance optimizations */
+.float-animation,
+.pulse-animation,
+.card-3d {
+  will-change: transform;
+}
+
+.slide-up,
+.slide-left,
+.slide-right,
+.fade-scale {
+  will-change: transform, opacity;
+}
+
+/* Remove will-change after animation completes */
+.slide-up.animation-complete,
+.slide-left.animation-complete,
+.slide-right.animation-complete,
+.fade-scale.animation-complete {
+  will-change: auto;
+}

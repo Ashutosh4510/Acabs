@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
 import '../styles/animations.css';
+import './HomePage.css';
 
 const HomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,161 +16,65 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="homepage">
       <Navbar />
       
       {/* Hero Section */}
-      <div style={{
-        background: 'linear-gradient(135deg, #000 0%, #1a1a1a 100%)',
-        color: 'white',
-        position: 'relative',
-        overflow: 'hidden',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center'
-      }}>
+      <div className="hero-section">
         {/* Geometric Background */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `
-            radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
-            linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.02) 50%, transparent 70%)
-          `
-        }}></div>
+        <div className="hero-background"></div>
         
         {/* Floating Elements */}
-        <div style={{
-          position: 'absolute',
-          top: '15%',
-          left: '5%',
-          width: '2px',
-          height: '100px',
-          background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.3), transparent)',
-          transform: 'rotate(45deg)'
-        }} className="float-animation"></div>
-        <div style={{
-          position: 'absolute',
-          top: '60%',
-          right: '10%',
-          width: '80px',
-          height: '2px',
-          background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent)',
-          transform: 'rotate(-45deg)',
-          animationDelay: '2s'
-        }} className="float-animation"></div>
+        <div className="floating-element-1 float-animation"></div>
+        <div className="floating-element-2 float-animation"></div>
 
-        <div style={{ 
-          maxWidth: '1400px', 
-          margin: '0 auto', 
-          padding: '0 2rem',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
-          gap: '4rem',
-          alignItems: 'center',
-          minHeight: '100vh'
-        }}>
+        <div className="hero-container">
           {/* Left Content */}
-          <div className={isLoaded ? 'slide-left' : ''}>
-            <div style={{ marginBottom: '2rem' }}>
-              <span style={{
-                display: 'inline-block',
-                padding: '0.5rem 1.5rem',
-                backgroundColor: 'rgba(255,255,255,0.1)',
-                borderRadius: '50px',
-                fontSize: '0.9rem',
-                fontWeight: '500',
-                marginBottom: '2rem',
-                border: '1px solid rgba(255,255,255,0.2)',
-                color: 'white'
-              }}>
+          <div className={`hero-content ${isLoaded ? 'slide-left' : ''}`}>
+            <div className="hero-badge-container">
+              <span className="hero-badge">
                 AI-Powered Transportation
               </span>
             </div>
             
-            <h1 style={{
-              fontSize: 'clamp(3rem, 8vw, 5rem)',
-              fontWeight: '900',
-              lineHeight: '1.1',
-              marginBottom: '2rem',
-              background: 'linear-gradient(135deg, #fff 0%, #ccc 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              letterSpacing: '-2px'
-            }}>
+            <h1 className="hero-title">
               Your Ride,
               <br />
-              <span style={{ color: 'white' }}>Delivered</span>
+              <span className="hero-title-accent">Delivered</span>
             </h1>
             
-            <p style={{
-              fontSize: '1.3rem',
-              lineHeight: '1.6',
-              opacity: 0.8,
-              marginBottom: '3rem',
-              maxWidth: '500px',
-              color: 'rgba(255,255,255,0.7)'
-            }}>
+            <p className="hero-description">
               Experience the future of transportation with our AI-powered platform.
               Fast, reliable, and always available.
             </p>
             
             {/* Stats */}
-            <div style={{
-              display: 'flex',
-              gap: '3rem',
-              marginBottom: '3rem',
-              flexWrap: 'wrap'
-            }}>
-              <div>
-                <div style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '0.5rem', color: 'white' }}>50K+</div>
-                <div style={{ fontSize: '0.9rem', opacity: 0.7, color: 'rgba(255,255,255,0.7)' }}>Happy Riders</div>
+            <div className="hero-stats">
+              <div className="stat-item">
+                <div className="stat-number">50K+</div>
+                <div className="stat-label">Happy Riders</div>
               </div>
-              <div>
-                <div style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '0.5rem', color: 'white' }}>24/7</div>
-                <div style={{ fontSize: '0.9rem', opacity: 0.7, color: 'rgba(255,255,255,0.7)' }}>Available</div>
+              <div className="stat-item">
+                <div className="stat-number">24/7</div>
+                <div className="stat-label">Available</div>
               </div>
-              <div>
-                <div style={{ fontSize: '2.5rem', fontWeight: '800', marginBottom: '0.5rem', color: 'white' }}>5★</div>
-                <div style={{ fontSize: '0.9rem', opacity: 0.7, color: 'rgba(255,255,255,0.7)' }}>Rating</div>
+              <div className="stat-item">
+                <div className="stat-number">5★</div>
+                <div className="stat-label">Rating</div>
               </div>
             </div>
             
             {/* CTA Buttons */}
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <button style={{
-                padding: '1rem 2rem',
-                backgroundColor: 'white',
-                color: '#000000',
-                border: 'none',
-                borderRadius: '50px',
-                fontSize: '1.1rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                transition: 'all 0.3s'
-              }}
-              className="shine-effect"
-              onClick={() => navigate('/booking')}
+            <div className="hero-buttons">
+              <button
+                className="hero-btn primary shine-effect"
+                onClick={() => navigate('/booking')}
               >
                 Book Now
               </button>
-              <button style={{
-                padding: '1rem 2rem',
-                backgroundColor: 'transparent',
-                color: 'white',
-                border: '2px solid rgba(255,255,255,0.3)',
-                borderRadius: '50px',
-                fontSize: '1.1rem',
-                fontWeight: '600',
-                cursor: 'pointer',
-                transition: 'all 0.3s'
-              }}
-              className="shine-effect"
-              onClick={() => document.getElementById('fleet-section').scrollIntoView({ behavior: 'smooth' })}
+              <button
+                className="hero-btn secondary shine-effect"
+                onClick={() => document.getElementById('fleet-section').scrollIntoView({ behavior: 'smooth' })}
               >
                 View Fleet
               </button>
@@ -177,87 +82,23 @@ const HomePage = () => {
           </div>
           
           {/* Right Visual */}
-          <div className={isLoaded ? 'slide-right' : ''} style={{ position: 'relative' }}>
-            <div style={{
-              width: '100%',
-              height: '600px',
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)',
-              borderRadius: '30px',
-              position: 'relative',
-              overflow: 'hidden',
-              border: '1px solid rgba(255,255,255,0.1)'
-            }}>
+          <div className={`hero-visual ${isLoaded ? 'slide-right' : ''}`}>
+            <div className="hero-visual-container">
               {/* Car Visualization */}
-              <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '200px',
-                height: '120px'
-              }} className="pulse-animation">
-                <div style={{
-                  width: '100%',
-                  height: '80px',
-                  backgroundColor: 'white',
-                  borderRadius: '20px',
-                  position: 'relative',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.3)'
-                }}>
+              <div className="hero-car pulse-animation">
+                <div className="car-body">
                   {/* Car Windows */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '10px',
-                    left: '20px',
-                    right: '20px',
-                    height: '30px',
-                    backgroundColor: '#333',
-                    borderRadius: '10px'
-                  }}></div>
+                  <div className="car-windows"></div>
                   
                   {/* Car Wheels */}
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '-20px',
-                    left: '30px',
-                    width: '40px',
-                    height: '40px',
-                    backgroundColor: '#333',
-                    borderRadius: '50%',
-                    border: '8px solid white'
-                  }}></div>
-                  <div style={{
-                    position: 'absolute',
-                    bottom: '-20px',
-                    right: '30px',
-                    width: '40px',
-                    height: '40px',
-                    backgroundColor: '#333',
-                    borderRadius: '50%',
-                    border: '8px solid white'
-                  }}></div>
+                  <div className="car-wheel left"></div>
+                  <div className="car-wheel right"></div>
                 </div>
               </div>
               
               {/* Route Lines */}
-              <div style={{
-                position: 'absolute',
-                top: '20%',
-                left: '10%',
-                right: '10%',
-                height: '2px',
-                background: 'linear-gradient(to right, transparent, white, transparent)',
-                opacity: 0.5
-              }}></div>
-              <div style={{
-                position: 'absolute',
-                bottom: '20%',
-                left: '10%',
-                right: '10%',
-                height: '2px',
-                background: 'linear-gradient(to right, transparent, white, transparent)',
-                opacity: 0.5
-              }}></div>
+              <div className="route-line top"></div>
+              <div className="route-line bottom"></div>
             </div>
           </div>
         </div>
