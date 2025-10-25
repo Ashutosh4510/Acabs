@@ -510,6 +510,30 @@
   margin: 0 auto;
 }
 
+/* Coverage Grid */
+.coverage-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.coverage-map {
+  position: relative;
+  height: 500px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.coverage-stats {
+  display: grid;
+  gap: 3rem;
+}
+
 /* Additional Mobile Responsive */
 @media (max-width: 1024px) {
   .fleet-section,
@@ -517,10 +541,15 @@
     padding: 6rem 1.5rem;
   }
   
-  .fleet-grid {
+  .fleet-grid,
+  .coverage-grid {
     grid-template-columns: 1fr;
     gap: 4rem;
     min-height: auto;
+  }
+  
+  .coverage-map {
+    height: 400px;
   }
 }
 
@@ -530,8 +559,13 @@
     padding: 4rem 1rem;
   }
   
-  .fleet-grid {
+  .fleet-grid,
+  .coverage-grid {
     gap: 3rem;
+  }
+  
+  .coverage-map {
+    height: 350px;
   }
 }
 
@@ -541,8 +575,13 @@
     padding: 3rem 0.5rem;
   }
   
-  .fleet-grid {
+  .fleet-grid,
+  .coverage-grid {
     gap: 2rem;
+  }
+  
+  .coverage-map {
+    height: 300px;
   }
 }
 

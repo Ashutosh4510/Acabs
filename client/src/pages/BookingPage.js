@@ -6,6 +6,8 @@ import MapComponent from '../components/MapComponent/MapComponent';
 import Chatbot from '../components/Chatbot/Chatbot';
 import { useAuth } from '../context/AuthContext';
 import { useRides } from '../context/RidesContext';
+import './BookingPage.css';
+import '../styles/animations.css';
 
 const BookingPage = () => {
   const location = useLocation();
@@ -136,28 +138,12 @@ const BookingPage = () => {
   };
 
   return (
-    <div style={{ 
-      minHeight: '100vh', 
-      background: 'linear-gradient(135deg, #000 0%, #1a1a1a 100%)',
-      position: 'relative'
-    }}>
-      {/* Animated Background Elements */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: `
-          radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
-          radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%)
-        `,
-        animation: 'float 6s ease-in-out infinite'
-      }}></div>
+    <div className="booking-page">
+      <div className="booking-background"></div>
       
       <Navbar />
       
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '2rem', position: 'relative', zIndex: 1 }}>
+      <div className="booking-container">
         {!showVehicleSelection ? (
           <div style={{
             display: 'grid',

@@ -447,23 +447,9 @@ const HomePage = () => {
           </div>
           
           {/* Map Visualization */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '6rem',
-            alignItems: 'center',
-            position: 'relative',
-            zIndex: 1
-          }}>
+          <div className="coverage-grid">
             {/* Map Visual */}
-            <div className={isLoaded ? 'slide-left' : ''} style={{
-              position: 'relative',
-              height: '500px',
-              background: 'rgba(255,255,255,0.05)',
-              borderRadius: '20px',
-              border: '1px solid rgba(255,255,255,0.1)',
-              overflow: 'hidden'
-            }}>
+            <div className={`coverage-map ${isLoaded ? 'slide-left' : ''}`}>
               {/* Map Grid */}
               <div style={{
                 position: 'absolute',
@@ -554,7 +540,7 @@ const HomePage = () => {
             </div>
             
             {/* Coverage Stats */}
-            <div className={isLoaded ? 'slide-right' : ''}>
+            <div className={`coverage-stats ${isLoaded ? 'slide-right' : ''}`}>
               <div style={{
                 display: 'grid',
                 gap: '3rem'

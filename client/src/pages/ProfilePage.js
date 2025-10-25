@@ -5,6 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { useNotifications } from '../context/NotificationContext';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import './ProfilePage.css';
+import '../styles/animations.css';
 
 const ProfilePage = () => {
   const { user } = useAuth();
@@ -27,71 +29,17 @@ const ProfilePage = () => {
   }, []);
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #000 0%, #1a1a1a 100%)',
-      position: 'relative'
-    }}>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: `
-          radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
-          radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 0%, transparent 50%)
-        `,
-        animation: 'float 6s ease-in-out infinite'
-      }}></div>
+    <div className="profile-page">
+      <div className="profile-background"></div>
 
       <Navbar />
 
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '2rem',
-        position: 'relative',
-        zIndex: 1,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: 'calc(100vh - 80px)'
-      }}>
-        <div className={isLoaded ? 'slide-up' : ''} style={{
-          width: '100%',
-          maxWidth: '900px',
-          backgroundColor: '#2a2a2a',
-          borderRadius: '30px',
-          padding: '3rem',
-          boxShadow: `
-            inset 0 1px 0 rgba(255,255,255,0.1),
-            0 20px 40px rgba(0,0,0,0.4),
-            0 40px 80px rgba(0,0,0,0.3),
-            inset 0 -1px 0 rgba(0,0,0,0.2)
-          `,
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
-          {/* Ambient light effect */}
-          <div style={{
-            position: 'absolute',
-            top: '-50%',
-            left: '-50%',
-            width: '200%',
-            height: '200%',
-            background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)',
-            pointerEvents: 'none'
-          }}></div>
+      <div className="profile-container">
+        <div className={`profile-card ${isLoaded ? 'slide-up' : ''}`}>
+          <div className="profile-ambient"></div>
 
           {/* Profile Header */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '3rem',
-            position: 'relative',
-            zIndex: 2
-          }}>
+          <div className="profile-header">
             {/* Profile Picture */}
             <div style={{
               width: '120px',

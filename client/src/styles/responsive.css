@@ -324,20 +324,24 @@
 @media (max-width: 1024px) {
   .auth-container {
     flex-direction: column;
+    min-height: auto;
   }
   
   .auth-left {
-    min-height: 300px;
+    min-height: 250px;
     order: 2;
+    padding: 2rem 1rem;
   }
   
   .auth-right {
     order: 1;
     padding: 2rem 1rem;
+    min-height: auto;
   }
   
   .auth-form {
     max-width: 500px;
+    margin: 0 auto;
   }
 }
 

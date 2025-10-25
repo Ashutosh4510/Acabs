@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import Chatbot from '../components/Chatbot/Chatbot';
 import LeafletMap from '../components/LeafletMap/LeafletMap';
+import './MapsPage.css';
+import '../styles/animations.css';
 
 const MapsPage = () => {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -82,7 +84,7 @@ const MapsPage = () => {
   const displayLocations = searchQuery ? searchResults : defaultLocations;
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="maps-page">
       <Navbar />
       
       {/* Header Section */}
