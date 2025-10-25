@@ -9,6 +9,7 @@ const LoginPage = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -18,6 +19,9 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setError('');
+    
     try {
       const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
       const response = await axios.post(`${apiUrl}/auth/login`, formData);
@@ -25,6 +29,8 @@ const LoginPage = () => {
       navigate('/');
     } catch (error) {
       setError(error.response?.data?.message || 'Login failed');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -199,23 +205,42 @@ const LoginPage = () => {
           </div>
           <button 
             type="submit" 
+            disabled={isLoading}
             style={{ 
               width: '100%', 
               padding: '18px', 
-              backgroundColor: '#000', 
+              backgroundColor: isLoading ? '#666' : '#000', 
               color: 'white', 
               border: 'none',
               borderRadius: '12px',
               fontSize: '18px',
               fontWeight: '600',
-              cursor: 'pointer',
+              cursor: isLoading ? 'not-allowed' : 'pointer',
               transition: 'all 0.3s',
-              letterSpacing: '0.5px'
+              letterSpacing: '0.5px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.5rem'
             }}
-            onMouseOver={(e) => e.target.style.backgroundColor = '#333'}
-            onMouseOut={(e) => e.target.style.backgroundColor = '#000'}
+            onMouseOver={(e) => {
+              if (!isLoading) e.target.style.backgroundColor = '#333';
+            }}
+            onMouseOut={(e) => {
+              if (!isLoading) e.target.style.backgroundColor = '#000';
+            }}
           >
-            Sign In
+            {isLoading && (
+              <div style={{
+                width: '20px',
+                height: '20px',
+                border: '2px solid transparent',
+                borderTop: '2px solid white',
+                borderRadius: '50%',
+                animation: 'spin 1s linear infinite'
+              }}></div>
+            )}
+            {isLoading ? 'Signing In...' : 'Sign In'}
           </button>
         </form>
         {error && <div style={{ 
@@ -245,6 +270,15 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
+      
+      <style>
+        {`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}
+      </style>
     </div>
   );
 };
