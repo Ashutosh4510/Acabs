@@ -332,94 +332,40 @@ const BookingPage = () => {
                 <div
                   key={vehicle.type}
                   onClick={() => setSelectedVehicle(vehicle.type)}
+                  className={`vehicle-item ${selectedVehicle === vehicle.type ? 'selected' : ''}`}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '1.8rem',
                     border: selectedVehicle === vehicle.type ? '3px solid #000' : '2px solid #e8ecf4',
-                    borderRadius: '20px',
-                    marginBottom: '1.2rem',
-                    cursor: 'pointer',
                     backgroundColor: selectedVehicle === vehicle.type ? 'rgba(0,0,0,0.05)' : 'white',
-                    transition: 'all 0.3s',
                     boxShadow: selectedVehicle === vehicle.type ? 
                       '0 15px 35px rgba(0,0,0,0.15)' : '0 5px 15px rgba(0,0,0,0.08)',
                     transform: selectedVehicle === vehicle.type ? 'translateY(-3px)' : 'translateY(0)'
                   }}
-                  onMouseEnter={(e) => {
-                    if (selectedVehicle !== vehicle.type) {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (selectedVehicle !== vehicle.type) {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
-                    }
-                  }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                    <div style={{
-                      padding: '1.2rem',
-                      backgroundColor: selectedVehicle === vehicle.type ? '#000' : '#f8f9ff',
-                      borderRadius: '18px',
-                      transition: 'all 0.3s'
+                  <div className="vehicle-info">
+                    <div className="vehicle-icon-container" style={{
+                      backgroundColor: selectedVehicle === vehicle.type ? '#000' : '#f8f9ff'
                     }}>
                       {renderCarIcon(vehicle.type, selectedVehicle === vehicle.type)}
                     </div>
-                    <div>
-                      <h4 style={{ 
-                        margin: '0 0 0.5rem 0',
-                        fontSize: '1.4rem',
-                        fontWeight: '700',
-                        color: '#333'
-                      }}>{vehicle.name}</h4>
-                      <p style={{ 
-                        margin: '0 0 0.3rem 0', 
-                        color: '#666', 
-                        fontSize: '1rem',
-                        fontWeight: '500'
-                      }}>
+                    <div className="vehicle-details">
+                      <h4>{vehicle.name}</h4>
+                      <p className="vehicle-meta">
                         {vehicle.time} away • {vehicle.capacity}
                       </p>
-                      <p style={{ 
-                        margin: 0, 
-                        color: '#888', 
-                        fontSize: '0.9rem'
-                      }}>
+                      <p className="vehicle-description">
                         {vehicle.desc}
                       </p>
                     </div>
                   </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <p style={{ 
-                      margin: 0, 
-                      fontWeight: '800', 
-                      fontSize: '2rem',
-                      color: '#333'
-                    }}>
+                  <div className="vehicle-pricing">
+                    <p className="vehicle-price">
                       ${vehicle.price}
                     </p>
-                    <p style={{ 
-                      margin: '0.3rem 0 0 0', 
-                      fontSize: '0.85rem',
-                      color: '#666',
-                      fontWeight: '500'
-                    }}>
+                    <p className="price-label">
                       estimated fare
                     </p>
                     {selectedVehicle === vehicle.type && (
-                      <div style={{
-                        marginTop: '0.5rem',
-                        padding: '0.3rem 0.8rem',
-                        backgroundColor: '#000',
-                        color: 'white',
-                        borderRadius: '15px',
-                        fontSize: '0.8rem',
-                        fontWeight: '600'
-                      }}>Selected</div>
+                      <div className="selected-badge">Selected</div>
                     )}
                   </div>
                 </div>
