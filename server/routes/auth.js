@@ -65,6 +65,22 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'secret', { expiresIn: '7d' });
 
     // Send login confirmation email
+    try {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: user.email,
+        subject: 'Login Confirmation - Acabs',
+        html: `
+          <h2>Login Successful</h2>
+          <p>Hi ${user.name},</p>
+          <p>You have successfully logged into your Acabs account.</p>
+          <p>Time: ${new Date().toLocaleString()}</p>
+        `
+      });
+    } catch (emailError) {
+      console.log('Email send failed:', emailError);
+    }
+
     res.json({
       message: 'Login successful',
       token,

@@ -41,7 +41,7 @@ const LoginPage = () => {
       <Navbar />
       <div className="auth-container">
         {/* Left Side - Illustration */}
-        <div className={`auth-left ${isLoaded ? 'slide-left' : ''}`}>
+        <div className="auth-left">
           <div style={{
             width: '100%',
             height: '100%',
@@ -111,10 +111,10 @@ const LoginPage = () => {
         
         {/* Right Side - Form */}
         <div className="auth-right">
-          <div className={`auth-form ${isLoaded ? 'slide-right' : ''}`}>
+          <div className="auth-form">
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h1 className={`auth-title ${isLoaded ? 'slide-left' : ''}`}>Welcome Back</h1>
-          <p className={`auth-subtitle ${isLoaded ? 'slide-right' : ''}`}>Sign in to your account</p>
+          <h1 className="auth-title">Welcome Back</h1>
+          <p className="auth-subtitle">Sign in to your account</p>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">

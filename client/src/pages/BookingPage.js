@@ -145,137 +145,56 @@ const BookingPage = () => {
       
       <div className="booking-container">
         {!showVehicleSelection ? (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '3rem',
-            alignItems: 'center',
-            minHeight: '80vh'
-          }}>
+          <div className="booking-grid">
             {/* Left Side - Booking Guide */}
-            <div className={isLoaded ? 'slide-left' : ''} style={{ color: 'white' }}>
-              <div style={{
-                display: 'inline-block',
-                padding: '0.5rem 1.2rem',
-                backgroundColor: 'rgba(255,255,255,0.1)',
-                borderRadius: '25px',
-                fontSize: '0.9rem',
-                fontWeight: '600',
-                marginBottom: '2rem',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255,255,255,0.2)'
-              }}>
+            <div className="booking-guide">
+              <div className="guide-badge">
                 Booking Guide
               </div>
               
-              <h1 style={{ 
-                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
-                fontWeight: '800', 
-                marginBottom: '1.5rem',
-                letterSpacing: '-1px',
-                lineHeight: '1.2'
-              }}>
+              <h1 className="guide-title">
                 How to Book
                 <br />
-                <span style={{
-                  background: 'linear-gradient(45deg, #fff, #f0f0f0)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}>Your Ride</span>
+                <span className="guide-title-accent">Your Ride</span>
               </h1>
               
-              <p style={{ 
-                fontSize: '1.2rem',
-                lineHeight: '1.6',
-                opacity: 0.9,
-                marginBottom: '3rem',
-                maxWidth: '400px'
-              }}>
+              <p className="guide-description">
                 Follow these simple steps to book your ride quickly and easily.
               </p>
 
               {/* Booking Steps */}
-              <div style={{ marginBottom: '3rem' }}>
+              <div className="booking-steps">
                 {[
                   { step: '01', title: 'Enter Locations', desc: 'Add your pickup and destination addresses' },
                   { step: '02', title: 'Choose Vehicle', desc: 'Select from our range of available vehicles' },
                   { step: '03', title: 'Confirm Booking', desc: 'Review details and confirm your ride' },
                   { step: '04', title: 'Track Driver', desc: 'Monitor your driver\'s arrival in real-time' }
                 ].map((item, index) => (
-                  <div key={index} style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '1.5rem',
-                    marginBottom: '2rem',
-                    padding: '1rem',
-                    backgroundColor: 'rgba(255,255,255,0.05)',
-                    borderRadius: '15px',
-                    border: '1px solid rgba(255,255,255,0.1)'
-                  }}>
-                    <div style={{
-                      minWidth: '40px',
-                      height: '40px',
-                      backgroundColor: 'rgba(255,255,255,0.2)',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '0.9rem',
-                      fontWeight: '700'
-                    }}>
+                  <div key={index} className="step-item">
+                    <div className="step-number">
                       {item.step}
                     </div>
-                    <div>
-                      <h4 style={{
-                        fontSize: '1.1rem',
-                        fontWeight: '600',
-                        marginBottom: '0.3rem',
-                        margin: 0
-                      }}>{item.title}</h4>
-                      <p style={{
-                        fontSize: '0.9rem',
-                        opacity: 0.8,
-                        margin: 0,
-                        lineHeight: '1.4'
-                      }}>{item.desc}</p>
+                    <div className="step-content">
+                      <h4>{item.title}</h4>
+                      <p>{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Booking Tips */}
-              <div style={{
-                padding: '1.5rem',
-                backgroundColor: 'rgba(255,255,255,0.08)',
-                borderRadius: '20px',
-                border: '1px solid rgba(255,255,255,0.15)'
-              }}>
-                <h3 style={{
-                  fontSize: '1.2rem',
-                  fontWeight: '700',
-                  marginBottom: '1rem',
-                  margin: '0 0 1rem 0'
-                }}>Booking Tips</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+              <div className="booking-tips">
+                <h3 className="tips-title">Booking Tips</h3>
+                <div className="tips-list">
                   {[
                     'Be specific with your pickup location',
                     'Check estimated arrival time before booking',
                     'Have your phone ready for driver contact',
                     'Payment is processed after the ride'
                   ].map((tip, index) => (
-                    <div key={index} style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '0.8rem'
-                    }}>
-                      <div style={{ 
-                        minWidth: '6px',
-                        height: '6px', 
-                        backgroundColor: 'white', 
-                        borderRadius: '50%',
-                        marginTop: '0.5rem'
-                      }}></div>
-                      <span style={{ fontSize: '0.9rem', fontWeight: '400', opacity: 0.9, lineHeight: '1.4' }}>{tip}</span>
+                    <div key={index} className="tip-item">
+                      <div className="tip-bullet"></div>
+                      <span className="tip-text">{tip}</span>
                     </div>
                   ))}
                 </div>
@@ -283,129 +202,40 @@ const BookingPage = () => {
             </div>
 
             {/* Right Side - Booking Form */}
-            <div className={isLoaded ? 'slide-right' : ''}>
-              <div style={{
-                backgroundColor: 'rgba(255,255,255,0.95)',
-                backdropFilter: 'blur(20px)',
-                padding: '2.5rem',
-                borderRadius: '25px',
-                boxShadow: '0 25px 50px rgba(0,0,0,0.2)',
-                border: '1px solid rgba(255,255,255,0.3)'
-              }}>
-                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                  <h2 style={{
-                    fontSize: '1.8rem',
-                    fontWeight: '700',
-                    color: '#333',
-                    marginBottom: '0.5rem'
-                  }}>Where to?</h2>
-                  <p style={{
-                    color: '#666',
-                    fontSize: '1rem'
-                  }}>Let's get you moving</p>
+            <div>
+              <div className="booking-form-container">
+                <div className="form-header">
+                  <h2 className="form-title">Where to?</h2>
+                  <p className="form-subtitle">Let's get you moving</p>
                 </div>
 
                 <form onSubmit={(e) => { e.preventDefault(); handleContinueToVehicleSelection(); }}>
                   {/* Pickup Location */}
-                  <div style={{ marginBottom: '1.5rem', position: 'relative' }}>
-                    <div style={{
-                      position: 'absolute',
-                      left: '18px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      width: '12px',
-                      height: '12px',
-                      backgroundColor: '#28a745',
-                      borderRadius: '50%',
-                      zIndex: 2,
-                      boxShadow: '0 0 0 3px rgba(40, 167, 69, 0.2)'
-                    }}></div>
+                  <div className="location-input-group">
+                    <div className="location-dot pickup"></div>
                     <input
                       type="text"
                       placeholder="Pickup location"
                       value={pickup}
                       onChange={(e) => setPickup(e.target.value)}
                       required
-                      style={{
-                        width: '100%',
-                        padding: '18px 18px 18px 45px',
-                        border: '2px solid #e8ecf4',
-                        borderRadius: '15px',
-                        fontSize: '16px',
-                        backgroundColor: '#f8f9ff',
-                        outline: 'none',
-                        transition: 'all 0.3s',
-                        boxSizing: 'border-box',
-                        fontWeight: '500'
-                      }}
-                      onFocus={(e) => {
-                        e.target.style.border = '2px solid #667eea';
-                        e.target.style.backgroundColor = '#fff';
-                        e.target.style.transform = 'translateY(-2px)';
-                        e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.15)';
-                      }}
-                      onBlur={(e) => {
-                        e.target.style.border = '2px solid #e8ecf4';
-                        e.target.style.backgroundColor = '#f8f9ff';
-                        e.target.style.transform = 'translateY(0)';
-                        e.target.style.boxShadow = 'none';
-                      }}
+                      className="location-input"
                     />
                   </div>
 
                   {/* Connection Line */}
-                  <div style={{
-                    width: '2px',
-                    height: '25px',
-                    backgroundColor: '#ddd',
-                    margin: '0 auto 1rem 24px',
-                    borderRadius: '1px'
-                  }}></div>
+                  <div className="connection-line"></div>
 
                   {/* Destination */}
-                  <div style={{ marginBottom: '2rem', position: 'relative' }}>
-                    <div style={{
-                      position: 'absolute',
-                      left: '18px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      width: '12px',
-                      height: '12px',
-                      backgroundColor: '#dc3545',
-                      borderRadius: '50%',
-                      zIndex: 2,
-                      boxShadow: '0 0 0 3px rgba(220, 53, 69, 0.2)'
-                    }}></div>
+                  <div className="location-input-group" style={{ marginBottom: '2rem' }}>
+                    <div className="location-dot destination"></div>
                     <input
                       type="text"
                       placeholder="Destination"
                       value={destination}
                       onChange={(e) => setDestination(e.target.value)}
                       required
-                      style={{
-                        width: '100%',
-                        padding: '18px 18px 18px 45px',
-                        border: '2px solid #e8ecf4',
-                        borderRadius: '15px',
-                        fontSize: '16px',
-                        backgroundColor: '#f8f9ff',
-                        outline: 'none',
-                        transition: 'all 0.3s',
-                        boxSizing: 'border-box',
-                        fontWeight: '500'
-                      }}
-                      onFocus={(e) => {
-                        e.target.style.border = '2px solid #667eea';
-                        e.target.style.backgroundColor = '#fff';
-                        e.target.style.transform = 'translateY(-2px)';
-                        e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.15)';
-                      }}
-                      onBlur={(e) => {
-                        e.target.style.border = '2px solid #e8ecf4';
-                        e.target.style.backgroundColor = '#f8f9ff';
-                        e.target.style.transform = 'translateY(0)';
-                        e.target.style.boxShadow = 'none';
-                      }}
+                      className="location-input"
                     />
                   </div>
 
@@ -446,25 +276,18 @@ const BookingPage = () => {
                 </form>
 
                 {/* Trust Indicators */}
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  gap: '2rem',
-                  marginTop: '2rem',
-                  paddingTop: '1.5rem',
-                  borderTop: '1px solid #f0f0f0'
-                }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '800', color: '#000', marginBottom: '0.3rem' }}>4.9</div>
-                    <div style={{ fontSize: '0.8rem', color: '#666', fontWeight: '600' }}>Rating</div>
+                <div className="trust-indicators">
+                  <div className="trust-item">
+                    <div className="trust-value">4.9</div>
+                    <div className="trust-label">Rating</div>
                   </div>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '800', color: '#000', marginBottom: '0.3rem' }}>50K+</div>
-                    <div style={{ fontSize: '0.8rem', color: '#666', fontWeight: '600' }}>Rides</div>
+                  <div className="trust-item">
+                    <div className="trust-value">50K+</div>
+                    <div className="trust-label">Rides</div>
                   </div>
-                  <div style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.2rem', fontWeight: '800', color: '#000', marginBottom: '0.3rem' }}>2min</div>
-                    <div style={{ fontSize: '0.8rem', color: '#666', fontWeight: '600' }}>ETA</div>
+                  <div className="trust-item">
+                    <div className="trust-value">2min</div>
+                    <div className="trust-label">ETA</div>
                   </div>
                 </div>
               </div>
@@ -473,79 +296,37 @@ const BookingPage = () => {
         ) : (
           <div>
             {/* Vehicle Selection Header */}
-            <div style={{ textAlign: 'center', marginBottom: '3rem', color: 'white' }}>
-              <div style={{
-                display: 'inline-block',
-                padding: '0.5rem 1.2rem',
-                backgroundColor: 'rgba(255,255,255,0.1)',
-                borderRadius: '25px',
-                fontSize: '0.9rem',
-                fontWeight: '600',
-                marginBottom: '1.5rem',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255,255,255,0.2)'
-              }}>
+            <div className="vehicle-selection-header">
+              <div className="selection-badge">
                 Step 2 of 2
               </div>
               
-              <h1 className={isLoaded ? 'slide-left' : ''} style={{ 
-                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', 
-                fontWeight: '800', 
-                marginBottom: '1rem',
-                letterSpacing: '-1px'
-              }}>Choose Your Ride</h1>
+              <h1 className="selection-title">Choose Your Ride</h1>
               
-              <p className={isLoaded ? 'slide-right' : ''} style={{ 
-                fontSize: '1.2rem',
-                opacity: 0.9,
-                marginBottom: '2rem'
-              }}>Select the perfect vehicle for your journey</p>
+              <p className="selection-subtitle">Select the perfect vehicle for your journey</p>
               
               {/* Route Display */}
-              <div className={isLoaded ? 'slide-up' : ''} style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '1rem',
-                padding: '1rem 2rem',
-                backgroundColor: 'rgba(255,255,255,0.15)',
-                borderRadius: '25px',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255,255,255,0.2)'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <div style={{ width: '8px', height: '8px', backgroundColor: '#28a745', borderRadius: '50%' }}></div>
-                  <span style={{ fontSize: '0.95rem', fontWeight: '500' }}>{pickup}</span>
+              <div className="route-display">
+                <div className="route-point">
+                  <div className="route-dot pickup"></div>
+                  <span className="route-text">{pickup}</span>
                 </div>
-                <span style={{ opacity: 0.7 }}>→</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <div style={{ width: '8px', height: '8px', backgroundColor: '#dc3545', borderRadius: '50%' }}></div>
-                  <span style={{ fontSize: '0.95rem', fontWeight: '500' }}>{destination}</span>
+                <span className="route-arrow">→</span>
+                <div className="route-point">
+                  <div className="route-dot destination"></div>
+                  <span className="route-text">{destination}</span>
                 </div>
               </div>
             </div>
             
             {/* Map */}
-            <div className={isLoaded ? 'slide-up' : ''} style={{ marginBottom: '3rem' }}>
+            <div style={{ marginBottom: '3rem' }}>
               <MapComponent pickup={pickup} destination={destination} />
             </div>
             
             {/* Vehicle Options */}
-            <div className={isLoaded ? 'fade-scale' : ''} style={{ 
-              backgroundColor: 'rgba(255,255,255,0.95)', 
-              backdropFilter: 'blur(20px)',
-              borderRadius: '25px', 
-              padding: '2.5rem',
-              boxShadow: '0 25px 50px rgba(0,0,0,0.2)',
-              border: '1px solid rgba(255,255,255,0.3)',
-              animationDelay: '0.3s'
-            }}>
-              <h3 style={{ 
-                marginBottom: '2rem',
-                fontSize: '1.8rem',
-                fontWeight: '700',
-                color: '#333',
-                textAlign: 'center'
-              }}>Available Vehicles</h3>
+            <div className="vehicle-options">
+              <h3 className="vehicle-title">Available Vehicles</h3>
               
               {vehicleOptions.map((vehicle, index) => (
                 <div

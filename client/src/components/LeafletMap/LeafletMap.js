@@ -48,7 +48,10 @@ const LeafletMap = ({ locations, selectedCity, onLocationSelect }) => {
       mapInstance.current = window.L.map(mapRef.current, {
         center: [40.7128, -74.0060],
         zoom: 2,
-        zoomControl: true
+        zoomControl: true,
+        scrollWheelZoom: true,
+        doubleClickZoom: true,
+        touchZoom: true
       });
 
       // Add tile layer
@@ -56,6 +59,19 @@ const LeafletMap = ({ locations, selectedCity, onLocationSelect }) => {
         attribution: '© OpenStreetMap contributors',
         maxZoom: 18
       }).addTo(mapInstance.current);
+
+      // Handle resize
+      const resizeObserver = new ResizeObserver(() => {
+        if (mapInstance.current) {
+          setTimeout(() => {
+            mapInstance.current.invalidateSize();
+          }, 100);
+        }
+      });
+      
+      if (mapRef.current) {
+        resizeObserver.observe(mapRef.current);
+      }
 
       setMapReady(true);
       updateMarkers();
@@ -156,7 +172,16 @@ const LeafletMap = ({ locations, selectedCity, onLocationSelect }) => {
           Loading map...
         </div>
       )}
-      <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
+      <div 
+        ref={mapRef} 
+        style={{ 
+          width: '100%', 
+          height: '100%',
+          minHeight: '200px',
+          position: 'relative',
+          zIndex: 1
+        }} 
+      />
     </div>
   );
 };
